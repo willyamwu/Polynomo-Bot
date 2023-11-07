@@ -137,14 +137,14 @@ def divide_post(message):
 #     return CONSTANTS.twitter.update_status(status=message, in_reply_to_status_id=reply.id, auto_populate_reply_metadata=True)
 
 
-get_data(CONSTANTS.UPDATED_URL)
+# get_data(CONSTANTS.UPDATED_URL)
 
-text = build_daily_update_text(post_list_array)
-print(text)
-# previous_message = CONSTANTS.twitter.update_status(status=text, auto_populate_reply_metadata=True)
-# for message in all_post_text:
-#     for i in divide_post(message):
-#         print(i)
-#         previous_message = post_tweet(i, previous_message)
+# text = build_daily_update_text(post_list_array)
+# print(text)
+# # previous_message = CONSTANTS.twitter.update_status(status=text, auto_populate_reply_metadata=True)
+# # for message in all_post_text:
+# #     for i in divide_post(message):
+# #         print(i)
+# #         previous_message = post_tweet(i, previous_message)
 
-print("hello")
+# print("hello")

@@ -7,13 +7,19 @@ def get_data():
                             headers=CONSTANTS.header)
     data = response.json()['results'][0]['votes']
 
+    count = 0
+
     for bill in data:
         if bill['date'] == CONSTANTS.yesterday_date_string:
             build_text(bill=bill)
+            count += 1
 
         else:
             break
-
+    
+    if count == 0:
+        print("No new nominations for ", CONSTANTS.yesterday_date_string)
+        
 
 def build_text(bill):
     description_list = bill['description'].split(',')
@@ -28,7 +34,7 @@ def build_text(bill):
         result = bill['result'].upper()
 
     text = text + "\U0001F6A8: " + result + "\n"
-    text = text + "\U0001F5D3: " + bill['date'] + "\n"
+    text = text + "\U0001F5D3: " + bill['date'] + "\n\n"
 
     # Total counts
     total_yes = str(bill["total"]['yes']) + "(Y)"
@@ -55,6 +61,8 @@ def build_text(bill):
     text = text + "D: " + dem_yes + "-" + dem_no + "-" + dem_no_vote + "\n"
     text = text + "I: " + ind_yes + "-" + ind_no + "-" + ind_no_vote + "\n"
     text = text + "R: " + rep_yes + "-" + rep_no + "-" + rep_no_vote + "\n"
+
+    print(text)
 
     post_tweet(text)
 

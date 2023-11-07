@@ -1,6 +1,6 @@
 import updatedbills
+import enacted
 import nomination
-import
 import CONSTANTS
 
 
@@ -13,11 +13,12 @@ def main():
 def command_finder():
     while(True):
         user_input = input(CONSTANTS.start_up_prompt)
-        if user_input == 1:
-            print("Daily Script -- SELECTED")
-
+        if user_input == "1":
+            print("Daily Update -- SELECTED")
+            nomination.run()
+            enacted.run()
             break
-        elif user_input == 2:
+        elif user_input == "2":
             print("Print -- SELECTED")
             break
         else:

@@ -5,11 +5,13 @@ import os
 import requests
 import tweepy
 
+load_dotenv()
+
 # Twitter KEYS
 TWITTER_API_KEY = os.environ['TWITTER_API_KEY']
 TWITTER_API_SECRET = os.environ['TWITTER_API_SECRET']
-TWITTER_ACCESS_KEY = os.environ['TWITTER_ACCESS_KEY']
-TWITTER_ACCESS_SECRET = os.environ['TWITTER_ACCESS_SECRET']
+TWITTER_ACCESS_TOKEN = os.environ['TWITTER_ACCESS_TOKEN']
+TWITTER_ACCESS_TOKEN_SECRET = os.environ['TWITTER_ACCESS_TOKEN_SECRET']
 TWITTER_BEARER_TOKEN = os.environ['TWITTER_BEARER_TOKEN']
 
 # Propublica KEYS + URLs
@@ -44,14 +46,14 @@ yesteryesterday_date_string = yesteryesterday_date.strftime('%Y-%m-%d')
 
 # Twitter Authentication
 auth = tweepy.OAuthHandler(TWITTER_API_KEY, TWITTER_API_SECRET)
-auth.set_access_token(TWITTER_ACCESS_KEY, TWITTER_ACCESS_SECRET)
+auth.set_access_token(TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET)
 twitter = tweepy.API(auth)
 
 client = tweepy.Client(
     consumer_key=TWITTER_API_KEY,
     consumer_secret=TWITTER_API_SECRET,
-    access_token=TWITTER_ACCESS_KEY,
-    access_token_secret=TWITTER_ACCESS_SECRET
+    access_token=TWITTER_ACCESS_TOKEN,
+    access_token_secret=TWITTER_ACCESS_TOKEN_SECRET
 )
 
 header = {
